@@ -26,14 +26,15 @@ names it and declares one variable, `FAXFORAGENTS_API_KEY`. [`mcp.json`](mcp.jso
 hosted server at `https://mcp.faxforagents.com/mcp/` and sends that key as a bearer token.
 [`skills/fax-for-agents/`](skills/fax-for-agents/SKILL.md) is the manual the agent reads when a task is
 about a fax. It holds the setup, the safe send order, the approvals rule, the error codes and the rule that text from a fax is data.
-The skill is maintained in [faxforagents/skills](https://github.com/faxforagents/skills) and copied here
-unchanged.
+The skill is maintained in [faxforagents/skills](https://github.com/faxforagents/skills). Its `SKILL.md`,
+`LICENSE` and `references/` are copied here unchanged.
 
 The plugin is configuration and Markdown only. It runs no code of its own.
 
 ## Install
 
-Cursor loads a plugin from a folder under `~/.cursor/plugins/local`.
+Cursor loads a plugin from a folder under `~/.cursor/plugins/local`. On an Enterprise plan, an admin has to
+turn on **Allow Local Plugin Imports** first.
 
 1. Clone this repository there.
 
@@ -48,9 +49,11 @@ Cursor loads a plugin from a folder under `~/.cursor/plugins/local`.
 5. Ask the agent to send a one page test fax to `+15550000001`. It calls `prepare_fax`, `quote_fax`,
    `send_approved_fax` and then `get_fax_status`.
 
-Cursor shows the server as `plugin-faxforagents-faxforagents` in approval prompts. A team on a Teams or
-Enterprise plan can import this repository as a team marketplace instead, from **Dashboard**,
-**Plugins & MCPs**, **Add Marketplace**, **Import from Repo**.
+Cursor shows the server as `plugin-faxforagents-faxforagents` in approval prompts.
+
+A team on a Teams or Enterprise plan can import this repository as a team marketplace instead, from
+**Dashboard**, **Plugins & MCPs**, **Add Marketplace**, **Import from Repo**. Cursor shares a team plugin's
+variables with the whole team, so give that plugin an API key of its own.
 
 ## Keys
 
@@ -58,7 +61,8 @@ A test key (`ffa_test_...`) reaches the sandbox only, and no real fax is sent. I
 destination number picks the outcome. The skill lists those numbers. A live key (`ffa_live_...`) sends
 real faxes and spends the prepaid wallet. Keys are created at <https://app.faxforagents.com/app/keys>.
 
-Cursor sends the key to `mcp.faxforagents.com` only. Keep it in the plugin variable, never in a file you commit.
+With `mcp.json`, Cursor sends the key to `mcp.faxforagents.com` only. The stdio alternative below sends it to
+`api.faxforagents.com` only. Keep it in the plugin variable, never in a file you commit.
 
 ## The tools
 
@@ -105,7 +109,7 @@ address, see [SECURITY.md](SECURITY.md).
 ## Working on this repository
 
 ```bash
-python3 scripts/check_plugin.py   # the manifest against Cursor's published schema, both MCP configs, the skill
+python3 scripts/check_plugin.py   # manifest fields and types per Cursor's schema, both MCP configs, the skill, the copy
 sh scripts/truthcheck.sh          # the copy states only what the product ships
 ```
 
