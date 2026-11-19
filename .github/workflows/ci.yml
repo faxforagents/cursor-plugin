@@ -1,0 +1,44 @@
+name: ci
+
+# Provenance: faxforagents/kiro-power/.github/workflows/ci.yml (2026-11-19), actions pinned by SHA.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  truthcheck:
+    name: truth pins
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: sh scripts/truthcheck.sh
+
+  plugin:
+    name: manifest, mcp.json and the vendored skill
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: python3 scripts/check_plugin.py
+
+  skill-matches-source:
+    name: the vendored skill equals faxforagents/skills main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: |
+          for f in SKILL.md LICENSE references/mcp.md references/api.md; do
+            mkdir -p "/tmp/source/$(dirname "$f")"
+            curl -fsSL "https://raw.githubusercontent.com/faxforagents/skills/main/skills/fax-for-agents/$f" -o "/tmp/source/$f"
+            diff "/tmp/source/$f" "skills/fax-for-agents/$f"
+          done
+          echo "the vendored skill is current"
