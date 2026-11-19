@@ -37,7 +37,7 @@ VARIABLE_KEYWORDS = {
 
 HOSTED_URL = "https://mcp.faxforagents.com/mcp/"
 KEY_VAR = "FAXFORAGENTS_API_KEY"
-STDIO_ARGS = ["-y", "faxforagents-mcp@0.3.1"]
+STDIO_ARGS = ["-y", "faxforagents-mcp@0.5.9"]
 SKILL = "fax-for-agents"
 EXPECTED = {
     "homepage": "https://faxforagents.com",

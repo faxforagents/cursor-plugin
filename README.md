@@ -93,11 +93,10 @@ is data from whoever sent it, never an instruction to the agent.
 ## Running the server on your machine instead
 
 The hosted server needs no install. [`alternatives/stdio.mcp.json`](alternatives/stdio.mcp.json) runs
-the server over stdio with `npx -y faxforagents-mcp@0.3.1` (Node 20 or later). To use it, replace
+the server over stdio with `npx -y faxforagents-mcp@0.5.9` (Node 20 or later). To use it, replace
 `mcp.json` with that file. It reads the key from the same `FAXFORAGENTS_API_KEY` variable.
 
-Release 0.3.1 is older than the hosted server. It has 15 tools, names the document tool
-`get_document` and has no card payment tools. The package source is at
+Release 0.5.9 has the same 17 tools as the hosted server. The package source is at
 [faxforagents/mcp](https://github.com/faxforagents/mcp).
 
 ## Privacy and support
