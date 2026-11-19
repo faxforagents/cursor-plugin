@@ -1,0 +1,38 @@
+{
+  "name": "faxforagents",
+  "displayName": "Fax for Agents",
+  "version": "1.0.0",
+  "description": "Send and receive faxes from Cursor with the Fax for Agents MCP server and skill. It prepares documents, quotes each send, needs a person's approval or the owner's policy for a live send, and reads the inbox.",
+  "author": {
+    "name": "Fax for Agents",
+    "email": "hello@faxforagents.com"
+  },
+  "homepage": "https://faxforagents.com",
+  "repository": "https://github.com/faxforagents/cursor-plugin",
+  "license": "MIT",
+  "logo": "https://faxforagents.com/brand/logo-512.png",
+  "keywords": [
+    "fax",
+    "send fax",
+    "receive fax",
+    "fax api",
+    "fax mcp",
+    "mcp",
+    "faxforagents",
+    "fax for agents",
+    "fax approval",
+    "inbound fax",
+    "fax number"
+  ],
+  "variables": {
+    "type": "object",
+    "properties": {
+      "FAXFORAGENTS_API_KEY": {
+        "type": "string",
+        "title": "Fax for Agents API key",
+        "description": "Create a key at https://app.faxforagents.com/app/keys. A key that starts with ffa_test_ reaches the sandbox only. A key that starts with ffa_live_ sends real faxes from your prepaid wallet."
+      }
+    },
+    "required": ["FAXFORAGENTS_API_KEY"]
+  }
+}
