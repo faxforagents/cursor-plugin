@@ -12,7 +12,8 @@ fax-for-agents skill. Send and receive faxes from Cursor.
 [Dashboard](https://app.faxforagents.com) ·
 [Pricing](https://faxforagents.com/pricing/) ·
 [Changelog](https://faxforagents.com/changelog/) ·
-[Affiliate program](https://faxforagents.com/affiliates/)
+[Affiliate program](https://faxforagents.com/affiliates/) ·
+[GitLab](https://gitlab.com/faxforagents/cursor-plugin)
 
 [![CI](https://img.shields.io/github/actions/workflow/status/faxforagents/cursor-plugin/ci.yml?branch=main&label=ci)](https://github.com/faxforagents/cursor-plugin/actions/workflows/ci.yml)
 [![MIT licence](https://img.shields.io/badge/licence-MIT-1f6feb)](https://github.com/faxforagents/cursor-plugin/blob/main/LICENSE)
